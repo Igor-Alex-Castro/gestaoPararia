@@ -136,5 +136,13 @@ public class FuncionarioService  implements FunionarioInterface {
 		
 	}
 	
+	public void atualizarFuncionario(Pessoa funcionario) throws DomainExecepetions {
+		Pessoa pessoa = deleteFuncionario(funcionario);
+		if(pessoa == null) {
+			throw new DomainExecepetions("Nenhum funcionario foi encontrado para este cpf " + funcionario.getCpf());
+		}
+		System.out.println("Foi atualizado");
+		addFunionario(funcionario);
+	}
 	
 }

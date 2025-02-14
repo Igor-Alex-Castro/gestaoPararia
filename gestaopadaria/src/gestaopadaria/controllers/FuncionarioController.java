@@ -25,4 +25,8 @@ public class FuncionarioController {
 		return funcionarioService.deleteFuncionario(funcionario);
 	}
 	
+	public void atualizarFuncionario(Pessoa funcionario) throws DomainExecepetions {
+		 funcionarioService.atualizarFuncionario(funcionario);
+	}
+	
 }

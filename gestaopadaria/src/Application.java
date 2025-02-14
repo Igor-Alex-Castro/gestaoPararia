@@ -21,8 +21,8 @@ public class Application {
 		
 		Pessoa funcionario = 
 				new Funcionario("Alex",
-						18, 
-						"48826144444", 
+						23, 
+						"48826144447", 
 						"caixa", 
 						40.00, 
 						3, 
@@ -31,7 +31,7 @@ public class Application {
 		FuncionarioController funcionarioController = new FuncionarioController();
 		try {
 			//funcionarioController.addFuncionario(funcionario);
-			funcionarioController.deleteFuncionario(funcionario);
+			funcionarioController.atualizarFuncionario(funcionario);
 		} catch (DomainExecepetions e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

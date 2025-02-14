@@ -12,5 +12,6 @@ public interface FunionarioInterface  {
 	public List<Pessoa> listFunionario();
 	public  boolean existFuncionario(Pessoa funcionario) throws DomainExecepetions;
 	public Pessoa deleteFuncionario(Pessoa funcionario)  throws DomainExecepetions;
+	public void atualizarFuncionario(Pessoa funcionario) throws DomainExecepetions ;
 
 }
