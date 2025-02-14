@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,11 +42,11 @@ public class FuncionarioService  implements FunionarioInterface {
 	
 	@Override
 	public boolean existFuncionario(Pessoa funcionario) throws DomainExecepetions {
-		List<Funcionario> listFuncionario = new ArrayList<Funcionario>();
+		List<Pessoa> listFuncionario = new ArrayList<Pessoa>();
 			listFuncionario.addAll(listFunionario());
 		String cpfFuncionario = funcionario.toString().split("[,=]")[5];
 		
-		for (Funcionario func : listFuncionario) {
+		for (Pessoa func : listFuncionario) {
 			if(func.getCpf().equals(cpfFuncionario)) {
 				//throw new DomainExecepetions("CPF ja esta cadastrado");
 				return true;
@@ -54,10 +55,11 @@ public class FuncionarioService  implements FunionarioInterface {
 		
 		return false;
 	}
+	
 	@Override
-	public List<Funcionario> listFunionario() {
+	public List<Pessoa> listFunionario() {
 		String path = "C:\\files\\out.txt";
-		List<Funcionario> listFuncionarios = new ArrayList<Funcionario>();
+		List<Pessoa> listFuncionarios = new ArrayList<Pessoa>();
 		try(BufferedReader br = new BufferedReader(new FileReader(path))) {
 			String[] line = br.readLine().split("[,=]");
 			
@@ -93,8 +95,46 @@ public class FuncionarioService  implements FunionarioInterface {
 		return listFuncionarios;
 	}
 	
-
 	
+	@Override
+	public Pessoa deleteFuncionario(Pessoa funcionario) throws DomainExecepetions {
+		// TODO Auto-generated method stub
+		List<Pessoa> list =  listFunionario();
+		
+		for (Pessoa func : list) {
+			if(func.getCpf().equals(funcionario.getCpf())) {
+				list.remove(func);
+				System.out.println(func.getName() +  " " +  func.getCpf() + " - foi removido" );
+				addVariosFuncionarios(list);
+				return func;
+			}
+		}
+		
+		throw new DomainExecepetions("Nenhum funcionario foi encontrado para este cpf " + funcionario.getCpf());
+		
+	}
+	
+	
+	
+	public void addVariosFuncionarios(List<Pessoa> funcionarios) {
+		List<Pessoa> list = funcionarios;
+		
+		String path = "C:\\files\\out.txt";
+		
+		try(BufferedWriter bw = new BufferedWriter(new FileWriter(path))){
+			for (Pessoa funcionario2 : list) {
+				
+				bw.write(funcionario2.toString());	
+				bw.write("\n");
+			}
+			
+		}catch (IOException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		
+		
+	}
 	
 	
 }

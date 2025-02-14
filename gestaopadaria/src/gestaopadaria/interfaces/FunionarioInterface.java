@@ -9,6 +9,8 @@ import gestaopadaria.entities.Pessoa;
 public interface FunionarioInterface  {
 
 	public void addFunionario(Pessoa funcionario) throws DomainExecepetions ;
-	public List<Funcionario> listFunionario();
+	public List<Pessoa> listFunionario();
 	public  boolean existFuncionario(Pessoa funcionario) throws DomainExecepetions;
+	public Pessoa deleteFuncionario(Pessoa funcionario)  throws DomainExecepetions;
+
 }

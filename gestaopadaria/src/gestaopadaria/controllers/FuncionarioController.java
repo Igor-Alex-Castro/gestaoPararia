@@ -17,8 +17,12 @@ public class FuncionarioController {
 		funcionarioService.addFunionario(funcionario);
 	}
 	
-	public List<Funcionario> listFuncionario(){
+	public List<Pessoa> listFuncionario(){
 		return funcionarioService.listFunionario();
+	}
+	
+	public Pessoa deleteFuncionario(Pessoa funcionario) throws DomainExecepetions {
+		return funcionarioService.deleteFuncionario(funcionario);
 	}
 	
 }
