@@ -54,10 +54,19 @@ public class CaixaVenda {
 
 	@Override
 	public String toString() {
-		return "itensVenda=" + itensVenda + ",valorTotal=" + valorTotal + ", modoPagamento="
-				+ modoPagamento + "]";
+		String produtoTotalString = "";
+			for (ProdutoTotal produtoTotal : itensVenda) {
+				produtoTotalString += " --- " + produtoTotal.toString() + "\n";
+				
+			};
+			
+			return "itensVenda=\n" +  produtoTotalString
+				 +  "valorTotal=" + valorTotal + ", modoPagamento="
+				+ modoPagamento +
+				"\n------------------------------------------";
 	}
 
+	
 
 	
 

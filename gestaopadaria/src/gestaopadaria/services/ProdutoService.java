@@ -53,6 +53,8 @@ public class ProdutoService implements ProdutoInterface {
 					line = br.readLine().split("[,=]");
 				} catch (NullPointerException e) {
 					// line = null;
+					//e.printStackTrace();
+					line = null;
 					throw new NullPointerException("line is null because file is over");
 					// System.out.println(e.getMessage());
 				}
@@ -60,6 +62,7 @@ public class ProdutoService implements ProdutoInterface {
 
 		} catch (Exception e) {
 			e.printStackTrace();
+		
 		}
 
 		return produtos;

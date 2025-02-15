@@ -24,7 +24,12 @@ public class ProdutoTotal  extends Produto{
 		this.totalItem = totalItem;
 	}
 
-	
+	@Override
+	public String toString() {
+		return  "cod="+ getCod() + ",nome=" + getNome() + ""
+				+ ",valorPorItem=" + getTotalItem() + ",quantidade=" + getQuantidade() + 
+				"tipo=" + getTipo() + "totalItem" + totalItem;
+	}
 	
 	
 	
