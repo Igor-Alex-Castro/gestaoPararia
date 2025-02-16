@@ -1,5 +1,8 @@
 package gestaopadaria.entities;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,8 +14,10 @@ public class CaixaVenda {
 	private Double valorTotal;
 	private ModoPagamento modoPagamento;
 	
+	private LocalDateTime localDateTime;
+	private static  DateTimeFormatter fmt  = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
 	
-	public Double getValorTotal() {
+			public Double getValorTotal() {
 		return valorTotal;
 	}
 
@@ -51,6 +56,16 @@ public class CaixaVenda {
 	}
 
 
+	public LocalDateTime getLocalDate() {
+		return localDateTime;
+	}
+
+
+
+	public void setLocalDate(LocalDateTime localDateTime) {
+		this.localDateTime = localDateTime;
+	}
+
 
 	@Override
 	public String toString() {
@@ -62,9 +77,22 @@ public class CaixaVenda {
 			
 			return "itensVenda=\n" +  produtoTotalString
 				 +  "valorTotal=" + valorTotal + ", modoPagamento="
-				+ modoPagamento +
+				+ modoPagamento 
+				+", dataPagamento= " + fmt.format(localDateTime) +
 				"\n------------------------------------------";
 	}
+
+
+
+	
+
+
+
+	
+
+	
+
+
 
 	
 

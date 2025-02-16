@@ -1,17 +1,18 @@
 import java.math.BigDecimal;
+import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 
-import excepetions.DomainExecepetions;
+
 import gestaopadaria.controllers.CaixaVendaController;
-import gestaopadaria.controllers.FuncionarioController;
 import gestaopadaria.controllers.ProdutoController;
 import gestaopadaria.entities.CaixaVenda;
-import gestaopadaria.entities.Funcionario;
-import gestaopadaria.entities.Pessoa;
+
+
 import gestaopadaria.entities.Produto;
 import gestaopadaria.entities.ProdutoTotal;
 import gestaopadaria.enums.ModoPagamento;
@@ -147,6 +148,10 @@ public class Application {
 		scanner.nextLine();
 		
 		caixaVenda.setModoPagamento(modoPagamentos[posModoPagemto -1 ]);
+		
+		LocalDateTime localDateTime = LocalDateTime.now();
+		caixaVenda.setLocalDate(localDateTime);
+		
 		caixaController.addCompra(caixaVenda);
 		
 
@@ -157,8 +162,6 @@ public class Application {
 	
 		System.out.println("Qual pos do item para alteracao? ");
 		int pos = scanner.nextInt();
-		//scanner.next();
-		//System.out.println("Item removido da lista");
 		caixaVenda.getItensVenda().remove(pos-1);
 		System.out.println("Item removido da lista");
 		scanner.nextLine();
